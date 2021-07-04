@@ -23,13 +23,7 @@
 <%
 MongoClient mongo = new MongoClient( "localhost" , 27017 );
 DB db= mongo.getDB("OnlineCodingPlatform");
-DBCollection collection = db.getCollection("Users");
-BasicDBObject doc = new BasicDBObject();
-doc = new BasicDBObject();
-BasicDBObject query = new BasicDBObject("Email", "devesh.bhartiya0799@gmail.com");
-DBCursor cursor = collection.find(query);
 
-out.println(cursor.hasNext());
 
 %>
 </body>
