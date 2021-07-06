@@ -1,7 +1,11 @@
 @charset "ISO-8859-1";
 		body{
-			font-family: 'raleway',sans-serif;
+			font-family: Verdana ;
 			background: #f9f9f9;
+		}
+		a{
+			text-decoration: underline;
+			color: inherit;
 		}
 		div{
 			align-items: center;
@@ -48,6 +52,10 @@
 			width:100px;
 			box-shadow: 8px 8px 16px 0px rgba(0,0,0,0.2);
 		}
+		.button:hover{
+			background: ddd;
+		}
+		
 		.clear{
 			clear:both;
 		}
@@ -129,3 +137,24 @@
 		.dropdown:hover .dropdown-content {
 		  display: block;
 		}
+		
+		table{
+			border: none;
+		}
+		
+		th, td{
+			text-align:left;
+			padding: 15px;
+			border-bottom: solid thin;
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		

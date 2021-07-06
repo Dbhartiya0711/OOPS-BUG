@@ -5,7 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<link href="../Style1.css" rel="stylesheet">
+<link href="../../Styles.css" rel="stylesheet">
 </head>
 <body onload="changeHeader();">
 <%
@@ -29,11 +29,19 @@
 	</script>
 	
 	<div class="navbar" style="">
-				<span><a style="padding:0px" href="index.jsp"><img style="width:200px;" alt="OOPS! BUG" src="../Icon1.png"></a></span>			
-				<a href="">Code, Compile & Run</a>
+				<span><a style="padding:0px" href="index.jsp"><img style="width:200px;" alt="OOPS! BUG" src="../Images/Icon1.png"></a></span>			
+				<div class="dropdown">
+				    <button class="dropbtn">Practice & Learn
+				      <i class="fa fa-caret-down"></i>
+				    </button>
+				    <div class="dropdown-content">
+				      <a href="">Code, Compile & Run</a><!-- Current challenge -->
+				      <a href="Practice&Learn/AllProblems.jsp">Practice Problems</a><!-- Past Challenges -->
+				    </div>
+				</div>
 				<!-- <a href="">Products</a>Add product,for each product delete product
 				 --><div class="dropdown">
-				    <button class="dropbtn">Challenges
+				    <button class="dropbtn">Compete
 				      <i class="fa fa-caret-down"></i>
 				    </button>
 				    <div class="dropdown-content">
@@ -55,8 +63,8 @@
 				      <a href="">Sign Out</a><!-- Future Challenges -->
 				    </div>
 				</div>
-				<a id="foruser2" style="float: right;" id="" href="">To Do</a>
-				<a id="foreveryone" style="float: right;" id="Login.jsp" href="">Login</a>
+				<a id="foruser2" style="float: right;" href="">To Do</a>
+				<a id="foreveryone" style="float: right;" href="Login.jsp">Login</a>
 				
 		</div>
 </body>
