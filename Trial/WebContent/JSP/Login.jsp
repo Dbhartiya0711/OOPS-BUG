@@ -31,10 +31,13 @@
 				</div>
 				
 				<div class="clear" style="text-align: center;">
-					<br/>
+					
 					<button class="button" type="submit">Login</button>
+					
 				</div>
 			</form>
+			<br/>
+				<p style="max-width: 350px;margin: auto;">Don't Have an Account yet? Register <a href="Register.jsp">Here.</a></p>
 		</div>
 		<div>
          	<jsp:include page="footer.jsp"></jsp:include>

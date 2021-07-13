@@ -4,8 +4,8 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>OOPS! BUG</title>
-<link href="Style.css" rel="stylesheet">
+<title>Insert title here</title>
+<link href="../Styles.css" rel="stylesheet">
 </head>
 <body onload="changeHeader();">
 <%
@@ -29,14 +29,14 @@
 	</script>
 	
 	<div class="navbar" style="">
-				<span><a style="padding:0px" href="index.jsp"><img style="width:200px;" alt="OOPS! BUG" src="Images/Icon1.png"></a></span>			
+				<span><a style="padding:0px" href="../../index.jsp"><img style="width:200px;" alt="OOPS! BUG" src="../../Images/Icon1.png"></a></span>			
 				<div class="dropdown">
 				    <button class="dropbtn">Practice & Learn
 				      <i class="fa fa-caret-down"></i>
 				    </button>
 				    <div class="dropdown-content">
-				      <a href="JSP/Code,Compile&Run.jsp">Code, Compile & Run</a><!-- Current challenge -->
-				      <a href="JSP/Practice&Learn/AllProblems.jsp">Practice Problems</a><!-- Past Challenges -->
+				      <a href="../Code,Compile&Run.jsp">Code, Compile & Run</a><!-- Current challenge -->
+				      <a href="../Practice&Learn/AllProblems.jsp">Practice Problems</a><!-- Past Challenges -->
 				    </div>
 				</div>
 				<!-- <a href="">Products</a>Add product,for each product delete product
@@ -57,28 +57,15 @@
 				      <i class="fa fa-caret-down"></i>
 				    </button>
 				    <div class="dropdown-content">
-				      <a href="JSP/User/MyDetails.jsp">My Details</a><!-- Current challenge -->
+				      <a href="../User/MyDetails.jsp">My Details</a><!-- Current challenge -->
 				      <a href="">My Stats</a><!-- Past Challenges -->
 				      <a href="">Contribute</a><!-- Future Challenges -->
-				      <a href="JSP/LogoutData.jsp">Sign Out</a><!-- Future Challenges -->
+				      <a href="../LogoutData.jsp">Sign Out</a><!-- Future Challenges -->
 				    </div>
 				</div>
 				<a id="foruser2" style="float: right;" href="">To Do</a>
-				<a id="foreveryone" style="float: right;" href="JSP/Login.jsp">Login</a>
+				<a id="foreveryone" style="float: right;" href="../Login.jsp">Login</a>
 				
 		</div>
-		
-
-<div>
-	
-</div>
-
-
-<div style="position:fixed;bottom:0px;overflow: hidden;background:white;border-radius:0px;margin-left:-8px;margin-top:-8px;width: 101.05%;color: black;height: 40px;box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.2);">
-    		<span style="float: right;padding-right: 25px;font-size: 20px; padding-top: 8px;">&copy;<a href="index.jsp" style="color: inherit; text-decoration: none;"> OOPS! BUG</a></span>
-</div>
-
-
-
 </body>
 </html>

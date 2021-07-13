@@ -52,6 +52,7 @@
 			height:37px;
 			width:100px;
 			box-shadow: 8px 8px 16px 0px rgba(0,0,0,0.2);
+			align-self: center;
 		}
 		.button:hover{
 			background: ddd;
@@ -86,13 +87,13 @@
 		  
 		}
 		
+		.dropbtn{
+			min-width: 140px;
+		}
 		/* The dropdown container */
 		.dropdown {
 		  float: left;
 		  overflow: hidden;
-		}
-		.dropbtn{
-			min-width: 140px;
 		}
 		
 		/* Dropdown button */

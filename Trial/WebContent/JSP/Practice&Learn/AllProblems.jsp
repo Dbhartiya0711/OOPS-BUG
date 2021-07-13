@@ -17,7 +17,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../../Styles.css">
+<link rel="stylesheet" href="../../Styles1.css">
 <!-- <style type="text/css">
 	a{
 		text-decoration: none; 
@@ -55,12 +55,17 @@
 						while(cursor.hasNext())
 						{
 							doc=cursor.next();
+							
+							double totalsubmisions=Double.parseDouble(doc.get("TotalSubmissions").toString());
+							double successfulsubmissions=Double.parseDouble(doc.get("SuccessfulSubmissions").toString());
+							int totalsubmissions=(int)totalsubmisions;
+							int accuracy=(int)((successfulsubmissions/totalsubmisions)*100);
 					%>
 					<tr style="border-bottom: thin;">
 						<td><a href="../Problem.jsp?id=<%=doc.get("_id")%>"><%=doc.get("Name")%></a></td>
-						<td><a href="Problem.jsp?id=<%=doc.get("_id")%>"><%=doc.get("_id")%></a></td>
-						<td><%=doc.get("SuccessfulSubmissions") %></td>
-						<td><%=doc.get("Accuracy") %>%</td>
+						<td><a href="../Problem.jsp?id=<%=doc.get("_id")%>"><%=doc.get("_id")%></a></td>
+						<td><%=totalsubmissions %></td>
+						<td><%=accuracy%>%</td>
 					</tr>
 					<%}%>
     			</table>   	

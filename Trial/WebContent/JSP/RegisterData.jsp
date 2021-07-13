@@ -46,6 +46,10 @@ if(!cursor.hasNext() && !cursor1.hasNext())
 	doc.append("Email",email);
 	doc.append("Username",username);
 	doc.append("Password",password);
+	doc.append("Name", username);
+	doc.append("Country", "India");
+	doc.append("Institution","Dayananda Sagar College Of Engineering");
+	doc.append("State", "Karnataka");
 	collection.insert(doc);
 	out.println("<script type=\"text/javascript\">");
    	out.println("alert('Registered Successfully');");

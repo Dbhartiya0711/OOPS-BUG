@@ -44,7 +44,7 @@
 				session.setAttribute("Username", user);
 				out.println("<script type=\"text/javascript\">");
 			   	out.println("alert('Signed In Successfully!!!');");
-			   	out.println("location='Login.jsp';");
+			   	out.println("location='../index.jsp';");
 			   	out.println("</script>");
 			}
 			else

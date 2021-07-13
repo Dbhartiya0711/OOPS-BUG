@@ -35,6 +35,8 @@
 		
 		DBCursor cursor = collection.find(query);
 		%>	
+		
+		
 </head>
 <body>
 		
@@ -53,7 +55,7 @@
 						{
 							doc=cursor.next();
 					%>
-						<p><span style="text-align: left;font-size:xx-large;"><%= doc.get("Name")%>     </span><span>Code: <%= doc.get("_id")%></span></p>
+						<p><span style="text-align: left;font-size:xx-large;"><%= doc.get("Name")%>     </span><span>Code: <%= doc.get("_id")%></span>  <button onclick="AddToDo()">ToDo</button></p>
 						<hr>
 						<p style="line-height: 25px;"><% out.println(doc.get("Question"));%></p>
 						<hr>
@@ -68,7 +70,7 @@
 						<p style="line-height: 25px;"><b>Specifications</b> <br> <% out.println(doc.get("Specifications"));%></p>
 						
 						<div style="text-align: center;">
-							<button class="button" onclick="" >Submit</button>
+							<button class="button" onclick="location='SubmitProblem.jsp?id=<%=doc.get("_id") %>'" >Submit</button>
 						</div>
 					<%}%>
     			</div>   	
@@ -84,4 +86,36 @@
     	</div>
 
 </body>
+<script type="text/javascript">
+			function AddToDo() {
+				if("<%=(String)session.getAttribute("Username")%>" == "null")
+				{
+					alert("To add to ToDo, first Login");
+				}
+				else
+					{
+						alert("Todo me add hogaya");
+						<%
+						DBCollection coll1 = db.getCollection("Users");
+						BasicDBObject query1 = new BasicDBObject();
+						query1.put("Username", (String)session.getAttribute("Username"));
+						DBObject obj1 = coll1.findOne(query1);
+						BasicDBObject newDocument = new BasicDBObject();
+						
+						if(obj1 != null &&   obj1.containsField("ToDo"))
+						{
+							newDocument.append("$set", new BasicDBObject().append("ToDo", (String)obj1.get("ToDo")+","+id));
+							coll1.update(query1,newDocument);
+						}
+						else if(obj1!=null)
+						{
+							newDocument.append("$set", new BasicDBObject().append("ToDo", id));
+							coll1.update(query1,newDocument);
+						}
+						%>
+					}
+				
+			}
+		
+		</script>
 </html>

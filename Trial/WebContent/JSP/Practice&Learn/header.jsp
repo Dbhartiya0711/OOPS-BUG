@@ -29,13 +29,13 @@
 	</script>
 	
 	<div class="navbar" style="">
-				<span><a style="padding:0px" href="index.jsp"><img style="width:200px;" alt="OOPS! BUG" src="../../Images/Icon1.png"></a></span>			
+				<span><a style="padding:0px" href="../../index.jsp"><img style="width:200px;" alt="OOPS! BUG" src="../../Images/Icon1.png"></a></span>			
 				<div class="dropdown">
 				    <button class="dropbtn">Practice & Learn
 				      <i class="fa fa-caret-down"></i>
 				    </button>
 				    <div class="dropdown-content">
-				      <a href="">Code, Compile & Run</a><!-- Current challenge -->
+				      <a href="../Code,Compile&Run.jsp">Code, Compile & Run</a><!-- Current challenge -->
 				      <a href="AllProblems.jsp">Practice Problems</a><!-- Past Challenges -->
 				    </div>
 				</div>
@@ -57,10 +57,10 @@
 				      <i class="fa fa-caret-down"></i>
 				    </button>
 				    <div class="dropdown-content">
-				      <a href="">My Details</a><!-- Current challenge -->
+				      <a href="../User/MyDetails.jsp">My Details</a><!-- Current challenge -->
 				      <a href="">My Stats</a><!-- Past Challenges -->
 				      <a href="">Contribute</a><!-- Future Challenges -->
-				      <a href="">Sign Out</a><!-- Future Challenges -->
+				      <a href="../LogoutData.jsp">Sign Out</a><!-- Future Challenges -->
 				    </div>
 				</div>
 				<a id="foruser2" style="float: right;" href="">To Do</a>
