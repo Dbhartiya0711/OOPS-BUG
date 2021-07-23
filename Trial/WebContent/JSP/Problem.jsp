@@ -37,6 +37,63 @@
 		%>	
 		
 		
+		
+		<script type="text/javascript">
+		var myFuncCalls = 0;
+			function AddToDo() 
+			{
+				myFuncCalls++;
+				if("<%=(String)session.getAttribute("Username")%>" == "null")
+				{
+					alert("To add to ToDo, first Login");
+				}
+				else
+					{
+						if(myFuncCalls==1)
+							{
+								location.replace(document.URL+"&ToDo=\"True\"");
+							}
+							<%
+						 String Todo=(String)request.getParameter("ToDo");
+						if(Todo != null)
+						{
+							DBCollection coll1 = db.getCollection("Users");
+							BasicDBObject query1 = new BasicDBObject();
+							query1.put("Username", (String)session.getAttribute("Username"));
+							DBObject obj1 = coll1.findOne(query1);
+							BasicDBObject newDocument = new BasicDBObject();
+
+							try{
+								String solved=obj1.get("ToDo").toString();
+								StringTokenizer str=new StringTokenizer(solved,",");
+								int flag=0;
+								while(str.hasMoreTokens())
+								{
+									String qid=str.nextElement().toString();
+									if(qid.equals(id))
+									{
+										flag=1;
+										break;
+									}
+								}
+								if(flag==0 && obj1.containsField("ToDo"))
+								{
+									newDocument.append("$set", new BasicDBObject().append("ToDo", (String)obj1.get("ToDo")+","+id));
+									coll1.update(query1,newDocument);
+								}
+								}
+								catch(Exception e)
+								{
+									newDocument.append("$set", new BasicDBObject().append("ToDo", id));
+									coll1.update(query1,newDocument);
+								}
+						}
+						%>
+					}
+				
+			}
+		
+		</script>
 </head>
 <body>
 		
@@ -55,7 +112,7 @@
 						{
 							doc=cursor.next();
 					%>
-						<p><span style="text-align: left;font-size:xx-large;"><%= doc.get("Name")%>     </span><span>Code: <%= doc.get("_id")%></span>  <button onclick="AddToDo()">ToDo</button></p>
+						<p><span style="text-align: left;font-size:xx-large;"><%= doc.get("Name")%>     </span><span>Code: <%= doc.get("_id")%></span>  <button class="button" style="border-radius:3px;border:none;background:white;color:black;display: inline-block;font-size:15px;text-align: center;height:25px;width:80px;box-shadow: 4px 4px 8px 0px rgba(0,0,0,0.2);float: right;" onclick="AddToDo()">ToDo</button></p>
 						<hr>
 						<p style="line-height: 25px;"><% out.println(doc.get("Question"));%></p>
 						<hr>
@@ -86,36 +143,5 @@
     	</div>
 
 </body>
-<script type="text/javascript">
-			function AddToDo() {
-				if("<%=(String)session.getAttribute("Username")%>" == "null")
-				{
-					alert("To add to ToDo, first Login");
-				}
-				else
-					{
-						alert("Todo me add hogaya");
-						<%
-						DBCollection coll1 = db.getCollection("Users");
-						BasicDBObject query1 = new BasicDBObject();
-						query1.put("Username", (String)session.getAttribute("Username"));
-						DBObject obj1 = coll1.findOne(query1);
-						BasicDBObject newDocument = new BasicDBObject();
-						
-						if(obj1 != null &&   obj1.containsField("ToDo"))
-						{
-							newDocument.append("$set", new BasicDBObject().append("ToDo", (String)obj1.get("ToDo")+","+id));
-							coll1.update(query1,newDocument);
-						}
-						else if(obj1!=null)
-						{
-							newDocument.append("$set", new BasicDBObject().append("ToDo", id));
-							coll1.update(query1,newDocument);
-						}
-						%>
-					}
-				
-			}
-		
-		</script>
+
 </html>

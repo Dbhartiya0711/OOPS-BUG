@@ -24,12 +24,22 @@
 	}
 </style> -->
 <%
+HttpSession log=request.getSession(false);
+String Username = (String)log.getAttribute("Username");		
+	if(!Username.equals("Verifier_1999"))
+		response.sendRedirect("../Practice&Learn/AllProblems.jsp");
+		
+
+
+
+
+
 		MongoClient mongo = new MongoClient( "localhost" , 27017 );
 		DB db= mongo.getDB("OnlineCodingPlatform");
 		DBCollection collection = db.getCollection("Problems");
 
 		DBObject doc = new BasicDBObject();
-		BasicDBObject query=new BasicDBObject("Verification","Verified");
+		BasicDBObject query=new BasicDBObject("Verification","Pending");
 		
 		DBCursor cursor = collection.find(query);
 		%>	
@@ -42,7 +52,7 @@
 	    	
     	<div style="width: 80% ; border:#ddd inset 1px;;margin: 1% auto;padding: 2%;overflow: hidden;">
     		<div style="width: 71%;float: left;margin: 3% auto;border:#ddd inset 1px;;padding: 15px">
-    			<h3>Practice Problems</h3>
+    			<h3>Verify Problems</h3>
     			
     			<br>
     			
@@ -50,8 +60,8 @@
     				<tr>
     					<th>Name</th>
     					<th>Code</th>
-    					<th>Successful Submissions</th>
-    					<th>Accuracy</th>
+    					<th>Difficulty</th>
+    					<th>Contributor</th>
     				</tr>
     				<%
 						while(cursor.hasNext())
@@ -65,17 +75,13 @@
 								accuracy=(int)((successfulsubmissions/totalsubmissions)*100);
 					%>
 					<tr style="border-bottom: thin;">
-						<td><a href="../Problem.jsp?id=<%=doc.get("_id")%>"><%=doc.get("Name")%></a></td>
-						<td><a href="../Problem.jsp?id=<%=doc.get("_id")%>"><%=doc.get("_id")%></a></td>
-						<td><%=successfulsubmissions%></td>
+						<td><a href="VerifyProblem.jsp?id=<%=doc.get("_id")%>"><%=doc.get("Name")%></a></td>
+						<td><a href="VerifyProblem.jsp?id=<%=doc.get("_id")%>"><%=doc.get("_id")%></a></td>
+						<td><%=doc.get("Difficulty") %></td>
 						<td><%=accuracy%>%</td>
 					</tr>
 					<%}%>
     			</table>   	
-    		</div>
-    	
-    		<div style="width: 21%;float: right;margin: 3% auto;margin-left:1%;padding: 15px;border: #ddd inset 1px;">
-    			Search Problems
     		</div>
     	</div>
     	

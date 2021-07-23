@@ -95,6 +95,56 @@
 							}
 							%></td>
 						</tr>
+						<tr>
+							<td>My Contributions</td>
+							<td><%
+							try{
+								String solved=doc.get("Contributions").toString();
+							
+							StringTokenizer str=new StringTokenizer(solved,",");
+							while(str.hasMoreTokens())
+							{
+								String qid=str.nextElement().toString();
+								%>
+									<a style="display: inline-block;" href="../Problem.jsp?id=<%=qid%>"><%=qid%></a>
+								<%
+								
+							}
+							}
+							catch(Exception e)
+							{
+								%>
+									You have not contributed any Problems yet.
+								
+								<%
+							}
+							%></td>
+						</tr>
+						<tr>
+							<td>My Competitions</td>
+							<td><%
+							try{
+								String competitions=doc.get("CompetitionsHosted").toString();
+							
+							StringTokenizer str=new StringTokenizer(competitions,",");
+							while(str.hasMoreTokens())
+							{
+								String cid=str.nextElement().toString();
+								%>
+									<a style="display: inline-block;" href=""><%=cid%></a>
+								<%
+								
+							}
+							}
+							catch(Exception e)
+							{
+								%>
+									You have not hosted any yet.
+								
+								<%
+							}
+							%></td> 
+						</tr>
 						
 						</table>
 						
@@ -113,7 +163,7 @@
     		</div>
     	
     		<div style="width: 21%;float: right;margin: 3% auto;margin-left:1%;padding: 15px;border: #ddd inset 1px;">
-    			Search Problems
+    			Rating
     		</div>
     	</div>
     	
