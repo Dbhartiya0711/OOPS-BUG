@@ -15,7 +15,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<meta charset="ISO-8859-1">
+<title>Host Competition</title>
+<link rel = "icon" href = "../../Images/IconSite.png">
+<link rel="stylesheet" href="../../Styles1.css">
 <%
 
 	HttpSession log=request.getSession(false);  
@@ -28,15 +31,12 @@
 		if(un == "null")
 			{
 				alert('Please Login to Host Competition.');
-				location="Login.jsp";
+				location="../../Login.jsp";
 		   	}
 	}
 	
 	</script>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
 
-<link rel="stylesheet" href="../../Styles1.css">
 <style>input{
 	font-family: Verdana ;
 	background: #f9f9f9;
@@ -65,12 +65,10 @@ function  totalSelected()
 	else
 		document.getElementById('submit').disabled=false;
 	
-	var dateStart=new Date(document.getElementById("start").value)
-	var dateEnd=new Date(document.getElementById("end").value)
-	var time = (dateEnd.getTime() - dateStart.getTime())/(60000*count);
+	var time=document.getElementById("timeforcompetition").value;
 	
-	if(count != 0 && dateStart != null && dateEnd!= null)
-		document.getElementById("Time").innerHTML=time + "minutes";
+	if(count != 0 && time != null)
+		document.getElementById("Time").innerHTML=(time/count) + "minutes";
 	
 }  
 
@@ -107,7 +105,7 @@ function checkStartEnd() {
 		%>
 
 <div>
-         	<jsp:include page="header.jsp"></jsp:include>
+         	<jsp:include page="../header.jsp"></jsp:include>
     	</div>
 	    	
     	<div style="width: 80% ; border:#ddd inset 1px;;margin: 1% auto;padding: 2%;padding-top:0.8%;overflow: hidden;">
@@ -136,12 +134,18 @@ function checkStartEnd() {
 				<br/>
 				<input onchange="checkStartEnd();" id="end" required="required" type="datetime-local" name="dateTimeEnd">
 			</div>
-			<p></p>
+			<div>
+				<label>
+					Time For The Competition in Minutes:
+				</label>
+				<br/>
+				<input id="timeforcompetition" onkeyup="totalSelected();" required="required" type="number" name="TimeForCompetition">
+			</div>
 			<div>
 				<p>	Number Of Questions Selected: <span id="Count">0</span></p>
 			</div>
 			<div>
-				<p>	Time Per Question: <span id="Time">Select Questions and Timings</span></p>
+				<p>	Time Per Question: <span id="Time">Select Questions and Time for Competition</span></p>
 			</div>
 			Select Questions
 		<div style="overflow: auto;height: 280px;">
@@ -157,17 +161,17 @@ function checkStartEnd() {
 						while(cursor.hasNext())
 						{
 							doc=cursor.next();
-							int totalsubmissions=Integer.parseInt(doc.get("TotalSubmissions").toString());
-							int successfulsubmissions=Integer.parseInt(doc.get("SuccessfulSubmissions").toString());
+							double totalsubmissions=Double.parseDouble(doc.get("TotalSubmissions").toString());
+							double successfulsubmissions=Double.parseDouble(doc.get("SuccessfulSubmissions").toString());
 							int accuracy=0;
 							if(totalsubmissions !=0)
 								accuracy=(int)((successfulsubmissions/totalsubmissions)*100);
 					%>
 					<tr style="border-bottom: thin;">
 						<td><input type="checkbox" name="checkboxes" onclick="totalSelected();" value="<%=doc.get("_id")%>" id="<%=doc.get("_id")%>"></td>
-						<td><a target="_blank" href="../Problem.jsp?id=<%=doc.get("_id")%>"><%=doc.get("Name")%></a></td>
-						<td><a target="_blank" href="../Problem.jsp?id=<%=doc.get("_id")%>"><%=doc.get("_id")%></a></td>
-						<td><%=successfulsubmissions%></td>
+						<td><a target="_blank" href="../Practice&Learn/Problem.jsp?id=<%=doc.get("_id")%>"><%=doc.get("Name")%></a></td>
+						<td><a target="_blank" href="../Practice&Learn/Problem.jsp?id=<%=doc.get("_id")%>"><%=doc.get("_id")%></a></td>
+						<td><%=(int)successfulsubmissions%></td>
 						<td><%=accuracy%>%</td>
 					</tr>
 					

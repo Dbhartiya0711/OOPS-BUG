@@ -14,6 +14,57 @@
     import="java.util.Arrays"
     import="java.util.*"
     import= "org.bson.types.ObjectId;"%>
+    
+   <%-- <% 
+   		/*For Setting Test Cases*/
+   
+   
+   
+   MongoClient mongo1 = new MongoClient( "localhost" , 27017 );
+		DB db1= mongo1.getDB("OnlineCodingPlatform");
+		DBCollection collection1 = db1.getCollection("Problems");
+		BasicDBObject query = new BasicDBObject("_id", new ObjectId("60e2948bc51d84128afb1179"));
+	
+	
+		BasicDBObject testCase1 = new BasicDBObject();
+		testCase1.append("input", "8");
+		testCase1.append("output", "YES");
+		
+		BasicDBObject testCase2 = new BasicDBObject();
+		testCase2.append("input", "5");
+		testCase2.append("output", "NO");
+		
+		BasicDBObject testCase3 = new BasicDBObject();
+		testCase3.append("input", "4");
+		testCase3.append("output", "YES");
+		
+		BasicDBObject testCase4 = new BasicDBObject();
+		testCase4.append("input", "3");
+		testCase4.append("output", "NO");
+		
+		BasicDBObject testCase5 = new BasicDBObject();
+		testCase5.append("input", "2");
+		testCase5.append("output", "NO");
+		
+		
+		BasicDBObject testCases = new BasicDBObject();
+		testCases.append("testCase1", testCase1);
+		testCases.append("testCase2", testCase2);
+		testCases.append("testCase3", testCase3);
+		testCases.append("testCase4", testCase4);
+		testCases.append("testCase5", testCase5);
+		
+		BasicDBObject testCasesUpdate = new BasicDBObject();
+		testCasesUpdate.append("$set", new BasicDBObject().append("testCases", testCases));
+		collection1.update(query,testCasesUpdate);
+   
+   %> --%> 
+    
+    
+    
+    
+    
+    
 <!DOCTYPE html>
 <html>
 	<head>
@@ -31,7 +82,7 @@
 		if(un == "null")
 			{
 				alert('Please Login to Host Competition.');
-				location="Login.jsp";
+				location="../../Login.jsp";
 		   	}
 	}
 	
@@ -43,6 +94,7 @@
 		String Name = request.getParameter("CompetitionName");
 		String dateTimeStart = request.getParameter("dateTimeStart");		
 		String dateTimeEnd= request.getParameter("dateTimeEnd");
+		String TimeForCompetition=request.getParameter("TimeForCompetition");
 		String [] questions= request.getParameterValues("checkboxes");
 		String questionString="";
 		if (questions != null) 
@@ -70,6 +122,7 @@
 		doc.append("TimeStart", TimeStart);
 		doc.append("DateEnd", DateEnd);
 		doc.append("TimeEnd", TimeEnd);
+		doc.append("TimeForCompetition",TimeForCompetition);
 		doc.append("Questions", questionString);
 		doc.append("RegisteredUsers","");
 		

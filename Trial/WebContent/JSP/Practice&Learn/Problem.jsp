@@ -18,7 +18,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Problem</title>
-<link rel="stylesheet" href="../Styles.css">
+<link rel = "icon" href = "../Images/IconSite.png">
+<link href="../Styles1.css" rel="stylesheet/css">
 <style type="text/css">
 	.button:hover {
 	background: #ddd;
@@ -94,11 +95,31 @@
 			}
 		
 		</script>
+		
+		<style type="text/css">
+		.todobutton{
+			border-radius:3px;
+		border:none;
+		background:white;
+		color:black;
+		display: inline-block;
+		font-size:15px;
+		text-align: center;
+		height:25px;
+		width:80px;
+		box-shadow: 4px 4px 8px 0px rgba(0,0,0,0.2);
+		float: right;
+		}
+		.todobutton:hover {
+		background: #ddd;
+}
+		
+		</style>
 </head>
 <body>
 		
 		<div>
-         	<jsp:include page="header.jsp"></jsp:include>
+         	<jsp:include page="../header.jsp"></jsp:include>
     	</div>
 	    	
     	<div style="width: 80% ; border:#ddd inset 1px;;margin: 1% auto;padding: 2%;overflow: hidden;">
@@ -112,7 +133,7 @@
 						{
 							doc=cursor.next();
 					%>
-						<p><span style="text-align: left;font-size:xx-large;"><%= doc.get("Name")%>     </span><span>Code: <%= doc.get("_id")%></span>  <button class="button" style="border-radius:3px;border:none;background:white;color:black;display: inline-block;font-size:15px;text-align: center;height:25px;width:80px;box-shadow: 4px 4px 8px 0px rgba(0,0,0,0.2);float: right;" onclick="AddToDo()">ToDo</button></p>
+						<p><span style="text-align: left;font-size:xx-large;"><%= doc.get("Name")%>     </span><span>Code: <%= doc.get("_id")%></span>  <button class="todobutton"  onclick="AddToDo()">ToDo</button></p>
 						<hr>
 						<p style="line-height: 25px;"><% out.println(doc.get("Question"));%></p>
 						<hr>
@@ -133,13 +154,13 @@
     			</div>   	
     		</div>
     	
-    		<div style="width: 21%;float: right;margin: 3% auto;margin-top:0.75%;margin-left:1%;padding: 15px;border: #ddd inset 1px;">
-    			My Submissions
+    		<div style="width: 24%;float: right;">
+    			<jsp:include page="../User/MySubmissionTable.jsp"></jsp:include>
     		</div>
     	</div>
     	
     	<div>
-         	<jsp:include page="footer.jsp"></jsp:include>
+         	<jsp:include page="../footer.jsp"></jsp:include>
     	</div>
 
 </body>

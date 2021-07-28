@@ -5,7 +5,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Register for OOPS! BUG</title>
-<link href="../Style.css" rel="stylesheet/css">
+<link rel = "icon" href = "Images/IconSite.png">
+<link href="Styles1.css" rel="stylesheet/css">
 </head>
 <body onload="checkpasswords();changeHeader();checkforregister();">
 <script type="text/javascript">
@@ -18,7 +19,7 @@ function checkforregister() {
 	if(un != "null")
 		{
 			alert('Already Signed In. Cannot Register.');
-			location="../index.jsp";
+			location="index.jsp";
 	   	}
 }
 
@@ -88,22 +89,6 @@ function checkpasswords()
 			</form>
 		</div>
 
-
-<!-- <form action="RegisterData.jsp">
-	<label>Username</label>
-	<input type="text" required="required" name="username">
-	<label>Email</label>
-	<input type="email" required="required" name="email">
-	<label>Password</label>
-	<input type="password" required="required" name="password" onkeyup="checkpasswords();" id="pass">
-	<label>Confirm Password</label>
-	<input type="password" required="required" name="cpassword" onkeyup="checkpasswords();" id="cpass">
-	<br/>
-	<p id="para" style="display: none;">Pass Match</p>
-	<br/>
-<button id="submitbutton" >Submit</button>
-</form>
--->
 <div>
 	<jsp:include page="footer.jsp"></jsp:include>
 </div>

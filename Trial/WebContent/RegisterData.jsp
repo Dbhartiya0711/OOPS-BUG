@@ -50,6 +50,7 @@ if(!cursor.hasNext() && !cursor1.hasNext())
 	doc.append("Country", "India");
 	doc.append("Institution","Dayananda Sagar College Of Engineering");
 	doc.append("State", "Karnataka");
+	doc.append("Rating", 0);
 	collection.insert(doc);
 	out.println("<script type=\"text/javascript\">");
    	out.println("alert('Registered Successfully');");

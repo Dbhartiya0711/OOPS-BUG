@@ -16,18 +16,18 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Practice Problems</title>
+<title>Let's Compete</title>
 <link rel = "icon" href = "../../Images/IconSite.png">
 <link rel="stylesheet" href="../../Styles1.css">
 <%
 		MongoClient mongo = new MongoClient( "localhost" , 27017 );
 		DB db= mongo.getDB("OnlineCodingPlatform");
-		DBCollection collection = db.getCollection("Problems");
+		DBCollection collection = db.getCollection("Competitions");
 
 		DBObject doc = new BasicDBObject();
-		BasicDBObject query=new BasicDBObject("Verification","Verified");
+		BasicDBObject query=new BasicDBObject();
 		
-		DBCursor cursor = collection.find(query);
+		DBCursor cursor = collection.find();
 		%>	
 </head>
 <body>
@@ -36,9 +36,9 @@
          	<jsp:include page="../header.jsp"></jsp:include>
     	</div>
 	    	
-    	<div style="width: 80% ; border:#ddd inset 1px;margin: 1% auto;padding: 2%;overflow: hidden;">
+    	<div style="width: 80% ; border:#ddd inset 1px;;margin: 1% auto;padding: 2%;overflow: hidden;">
     		<div style="width: 71%;float: left;margin: 2% auto;border:#ddd inset 1px;;padding: 15px">
-    			<h3>Practice Problems</h3>
+    			<h3>Let's Compete</h3>
     			
     			<br>
     			
@@ -46,25 +46,22 @@
     				<tr>
     					<th>Name</th>
     					<th>Code</th>
-    					<th>Successful Submissions</th>
-    					<th>Accuracy</th>
+    					<th>Start</th>
+    					<th>End</th>
     				</tr>
     				<%
 						while(cursor.hasNext())
 						{
 							doc=cursor.next();
 							
-							double totalsubmissions=Double.parseDouble(doc.get("TotalSubmissions").toString());
-							double successfulsubmissions=Double.parseDouble(doc.get("SuccessfulSubmissions").toString());
-							int accuracy=0;
-							if(totalsubmissions >=0)
-								accuracy=(int)((successfulsubmissions/totalsubmissions)*100);
+							String Start = doc.get("DateStart").toString()+" "+doc.get("TimeStart").toString();
+							String End = doc.get("DateEnd").toString()+" "+doc.get("TimeEnd").toString();;
 					%>
 					<tr style="border-bottom: thin;">
-						<td><a href="Problem.jsp?id=<%=doc.get("_id")%>"><%=doc.get("Name")%></a></td>
-						<td><a href="Problem.jsp?id=<%=doc.get("_id")%>"><%=doc.get("_id")%></a></td>
-						<td><%=(int)successfulsubmissions%></td>
-						<td><%=accuracy%>%</td>
+						<td><a href="Competition.jsp?id=<%=doc.get("_id")%>"><%=doc.get("Name")%></a></td>
+						<td><a href="Competition.jsp?id=<%=doc.get("_id")%>"><%=doc.get("_id")%></a></td>
+						<td><%=Start %></td>
+						<td><%=End %></td>
 					</tr>
 					<%}%>
     			</table>   	

@@ -19,6 +19,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>OOPS! BUG</title>
+<link rel = "icon" href = "Images/IconSite.png">
 <link href="Style.css" rel="stylesheet">
 </head>
 
@@ -63,67 +64,24 @@
 				{
 				document.getElementById('foreveryone').style.display = 'none';
 				}
+			
+			if(un== "Verifier_1999")
+			{
+			document.getElementById('verifier').style.display = 'block';
+			document.getElementById('contributor').style.display = 'none';
+			}
+		else
+			{
+			document.getElementById('verifier').style.display = 'none';
+			document.getElementById('contributor').style.display = 'block';
+			}
 		}
 	</script>
 	
-	<div class="navbar" style="">
-				<span><a style="padding:0px" href="index.jsp"><img style="width:200px;" alt="OOPS! BUG" src="Images/Icon1.png"></a></span>			
-				<div class="dropdown">
-				    <button class="dropbtn">Practice & Learn
-				      <i class="fa fa-caret-down"></i>
-				    </button>
-				    <div class="dropdown-content">
-				      <a href="JSP/Code,Compile&Run.jsp">Code, Compile & Run</a><!-- Current challenge -->
-				      <a href="JSP/Practice&Learn/AllProblems.jsp">Practice Problems</a><!-- Past Challenges -->
-				    </div>
-				</div>
-				<a href="">Compete</a>
-				<a href="">About Us</a>
-				<div id="foruser1" style="float: right;" id="" class="dropdown">
-				    <button class="dropbtn"><%=username %>
-				      <i class="fa fa-caret-down"></i>
-				    </button>
-				    <div class="dropdown-content">
-				      <a href="JSP/User/MyDetails.jsp">My Details</a><!-- Current challenge -->
-				      <a href="JSP/User/Contribute.jsp">Contribute</a><!-- Past Challenges -->
-				      <a href="JSP/User/HostCompetition.jsp">Host Competitions</a><!-- Future Challenges -->
-				      <a href="JSP/LogoutData.jsp">Sign Out</a><!-- Future Challenges -->
-				    </div>
-				</div>
-				<div class="dropdown" id="foruser2" style="float: right;">
-				    <button class="dropbtn">ToDo
-				      <i class="fa fa-caret-down"></i>
-				    </button>
-				    <div class="dropdown-content">
-				    <%
-				    	try{
-							String competitions=obj2.get("ToDo").toString();
-						
-						StringTokenizer str=new StringTokenizer(competitions,",");
-						while(str.hasMoreTokens())
-						{
-							String qid=str.nextElement().toString();
-							%>
-								<a style="display: inline-block;" href="../Problem.jsp?id=<%=qid%>"><%=qid%></a>
-							<%
-							
-						}
-						}
-						catch(Exception e)
-						{
-							%>
-								<a href="">No To Do's</a>
-							
-							<%
-						}
-						%>
-				    </div>
-				</div>
-				<a id="foreveryone" style="float: right;" href="JSP/Login.jsp">Login</a>
-				
-		</div>
 		
-
+<div>
+	<jsp:include page="header.jsp"></jsp:include>
+</div>
 <div>
 <br><br><br>
     	<br><br>
@@ -133,15 +91,12 @@
     	<p><a style="padding:0px" href="index.jsp"><img style="width:300px;" alt="OOPS! BUG" src="Images/Icon1.png"></a></p>
     	<br>
     	<p style="text-align: center;">
-    		New Here? <a style="text-decoration: underline;color: black;" href="JSP/login.jsp">Register</a> to start Coding.
+    		New Here? <a style="text-decoration: underline;color: black;" href="Register.jsp">Register</a> to start Coding.
     	</p>
 	</div>
-    	
-
-
-<div style="position:fixed;bottom:0px;overflow: hidden;background:white;border-radius:0px;margin-left:-8px;margin-top:-8px;width: 101.05%;color: black;height: 40px;box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.2);">
-    		<span style="float: right;padding-right: 25px;font-size: 20px; padding-top: 8px;">&copy;<a href="index.jsp" style="color: inherit; text-decoration: none;"> OOPS! BUG</a></span>
-</div>
+<div>
+	<jsp:include page="footer.jsp"></jsp:include>
+</div>    	
 
 
 

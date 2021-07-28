@@ -18,6 +18,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Problem</title>
+<link rel = "icon" href = "../../Images/IconSite.png">
 <link rel="stylesheet" href="../../Styles1.css">
 <style type="text/css">
 	.button:hover {
@@ -49,7 +50,7 @@
 <body>
 		
 		<div>
-         	<jsp:include page="header.jsp"></jsp:include>
+         	<jsp:include page="../header.jsp"></jsp:include>
     	</div>
 	    	
     	<div style="width: 80% ; border:#ddd inset 1px;;margin: 1% auto;padding: 2%;overflow: hidden;">
@@ -143,13 +144,13 @@
     		</form>
     		</div>
    	
-    		<div style="width: 21%;float: right;margin: 3% auto;margin-top:0.75%;margin-left:1%;padding: 15px;border: #ddd inset 1px;">
-    			My Submissions
+    		<div style="width: 24%;float: right;">
+    			<jsp:include page="MySubmissionTable.jsp"></jsp:include>
     		</div>
     	</div>
     	
     	<div>
-         	<jsp:include page="footer.jsp"></jsp:include>
+         	<jsp:include page="../footer.jsp"></jsp:include>
     	</div>
 
 </body>

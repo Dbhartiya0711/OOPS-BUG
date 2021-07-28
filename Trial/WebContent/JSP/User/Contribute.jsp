@@ -5,6 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Contribute</title>
+<link rel = "icon" href = "../../Images/IconSite.png">
 <link rel="stylesheet" href="../../Styles1.css" >
 <style type="text/css">
 	textarea , input{
@@ -19,7 +20,7 @@
 
 
 	<div>
-         	<jsp:include page="header.jsp"></jsp:include>
+         	<jsp:include page="../header.jsp"></jsp:include>
     	</div>
 	    	
     	<div style="width: 80% ; border:#ddd inset 1px;;margin: 1% auto;padding: 2%;padding-top:0.8%;overflow: hidden;">
@@ -102,22 +103,8 @@
     	</div>
     	
     	<div>
-         	<jsp:include page="footer.jsp"></jsp:include>
+         	<jsp:include page="../footer.jsp"></jsp:include>
     	</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
 	</form>
 </body>
 </html>

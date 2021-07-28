@@ -19,7 +19,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<link href="../Styles.css" rel="stylesheet">
+<link href="../../Styles1.css" rel="stylesheet">
 </head>
 <body onload="changeHeader();">
 <%
@@ -64,28 +64,28 @@
 	</script>
 	
 	<div class="navbar" style="">
-				<span><a style="padding:0px" href="../index.jsp"><img style="width:200px;" alt="OOPS! BUG" src="../Images/Icon1.png"></a></span>			
+				<span><a style="padding:0px" href="../../index.jsp"><img style="width:200px;" alt="OOPS! BUG" src="../../Images/Icon1.png"></a></span>			
 				<div class="dropdown">
 				    <button class="dropbtn">Practice & Learn
 				      <i class="fa fa-caret-down"></i>
 				    </button>
 				    <div class="dropdown-content">
-				      <a href="Code,Compile&Run.jsp">Code, Compile & Run</a><!-- Current challenge -->
-				      <a href="Practice&Learn/AllProblems.jsp">Practice Problems</a><!-- Past Challenges -->
+				      <a href="../Practice&Learn/Code,Compile&Run.jsp">Code, Compile & Run</a><!-- Current challenge -->
+				      <a href="../Practice&Learn/AllProblems.jsp">Practice Problems</a><!-- Past Challenges -->
 				    </div>
 				</div>
-				<a href="">Compete</a>
-				<a href="">About Us</a>
+				<a href="../Compete/AllCompetitions.jsp">Compete</a>
+				<a href="../../AboutUs.jsp">About Us</a>
 				<div id="foruser1" style="float: right;" id="" class="dropdown">
 				    <button class="dropbtn"><%=username %>
 				      <i class="fa fa-caret-down"></i>
 				    </button>
 				    <div class="dropdown-content">
-				      <a href="User/MyDetails.jsp">My Details</a><!-- Current challenge -->
-				      <a href="User/Contribute.jsp">Contribute</a><!-- Past Challenges -->
-				      <a href="User/HostCompetition.jsp">Host Competitions</a><!-- Future Challenges -->
-				      <a id="contributor" href="User/Contribute.jsp">Contribute</a><!-- Future Challenges -->
-				      <a href="LogoutData.jsp">Sign Out</a><!-- Future Challenges -->
+				      <a href="../User/MyDetails.jsp">My Details</a><!-- Current challenge -->
+				      <a href="../User/HostCompetition.jsp">Host Competitions</a><!-- Future Challenges -->
+				      <a id="verifier" href="../User/AllVerify.jsp">Contribute</a><!-- Past Challenges -->
+				      <a id="contributor" href="../User/Contribute.jsp">Contribute</a><!-- Future Challenges -->
+				      <a href="../../LogoutData.jsp">Sign Out</a><!-- Future Challenges -->
 				    </div>
 				</div>
 				<div class="dropdown" id="foruser2" style="float: right;">
@@ -102,7 +102,7 @@
 						{
 							String qid=str.nextElement().toString();
 							%>
-								<a style="display: inline-block;" href="../Problem.jsp?id=<%=qid%>"><%=qid%></a>
+								<a style="display: inline-block;" href="../Practice&Learn/Problem.jsp?id=<%=qid%>"><%=qid%></a>
 							<%
 							
 						}
@@ -110,14 +110,14 @@
 						catch(Exception e)
 						{
 							%>
-								<a href="">No To Do's</a>
+								<a>No To Do's</a>
 							
 							<%
 						}
 						%>
 				    </div>
 				</div>
-				<a id="foreveryone" style="float: right;" href="Login.jsp">Login</a>
+				<a id="foreveryone" style="float: right;" href="../../Login.jsp">Login</a>
 				
 		</div>
 </body>

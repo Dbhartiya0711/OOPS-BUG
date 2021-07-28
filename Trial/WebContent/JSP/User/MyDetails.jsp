@@ -1,3 +1,4 @@
+<%@page import="org.bson.types.ObjectId"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"
     import="com.mongodb.MongoClient"
@@ -17,6 +18,7 @@
 	<head>
 		<meta charset="ISO-8859-1">
 		<title> My Details</title>
+		<link rel = "icon" href = "../../Images/IconSite.png">
 		<link rel="stylesheet" href="../../Styles1.css">
 	</head>
 	<body >
@@ -27,12 +29,12 @@
 			{
 				out.println("<script type=\"text/javascript\">");
 			   	out.println("alert('Login first to access your Details');");
-			   	out.println("location='../Login.jsp';");
+			   	out.println("location='../../Login.jsp';");
 			   	out.println("</script>");
 			}
 		%>
 		<div>
-         	<jsp:include page="header.jsp"></jsp:include>
+         	<jsp:include page="../header.jsp"></jsp:include>
     	</div>
     	<%
 		MongoClient mongo = new MongoClient( "localhost" , 27017 );
@@ -43,8 +45,8 @@
 
 		DBObject doc = new BasicDBObject();
 		%>	
-    	<div style="width: 80% ; border:#ddd inset 1px;;margin: 1% auto;padding: 2%;overflow: hidden;">
-    		<div style="width: 71%;float: left;margin: 3% auto;border:#ddd inset 1px;;padding: 15px">
+    	<div style="width: 85% ; border:#ddd inset 1px;;margin: 1% auto;padding: 2%;overflow: hidden;">
+    		<div style="width: 67%;float: left;margin: 3% auto;border:#ddd inset 1px;;padding: 15px">
     			<%
 						if(cursor.hasNext())
 						{
@@ -81,7 +83,7 @@
 							{
 								String qid=str.nextElement().toString();
 								%>
-									<a style="display: inline-block;" href="../Problem.jsp?id=<%=qid%>"><%=qid%></a>
+									<a style="display: inline-block;" href="../Practice&Learn/Problem.jsp?id=<%=qid%>"><%=qid%></a>
 								<%
 								
 							}
@@ -94,7 +96,7 @@
 								<%
 							}
 							%></td>
-						</tr>
+						</tr>				
 						<tr>
 							<td>My Contributions</td>
 							<td><%
@@ -106,7 +108,7 @@
 							{
 								String qid=str.nextElement().toString();
 								%>
-									<a style="display: inline-block;" href="../Problem.jsp?id=<%=qid%>"><%=qid%></a>
+									<a style="display: inline-block;" href="../Practice&Learn/Problem.jsp?id=<%=qid%>"><%=qid%></a>
 								<%
 								
 							}
@@ -150,26 +152,106 @@
 						
 				
 					
-					<%}
+					
+    		</div>
+    	
+    		<div style="width: 25%;float: right;margin: 3% auto;margin-left:1%;padding: 15px;border: #ddd inset 1px;">
+    			<div style="border: #ddd inset 1px; padding: 5px;padding-top: 0px;">
+    				<h3 style="margin-bottom:20px;"><%=(Integer.parseInt(doc.get("Rating").toString()))%></h3>
+    				<h3 style="font-size: 0px;">
+    				<%
+    				int star=0;
+    				int ratingscore=(int) (Integer.parseInt(doc.get("Rating").toString()))/25;
+    				if(ratingscore >0 && ratingscore<=20)
+    					star=1;
+    				else if (ratingscore >20 && ratingscore<=40)
+						star=2;
+    				else if (ratingscore >40 && ratingscore<=60)
+						star=3;
+    				else if (ratingscore >60 && ratingscore<=80)
+						star=4;
+    				else if (ratingscore >80 && ratingscore<=100)
+						star=5;
+    				
+    				for(int i=1;i<=star;i++)
+    				{
+    				%>
+    					<img alt="star" src="../../Images/star.png" width="30px" height="30px" style="margin: 0px;padding: 0px;">	
+    				<%} %>
+    				</h3>
+    				<%}
 						
     					else if(Username!= null)
     					{
     						out.println("<script type=\"text/javascript\">");
     					   	out.println("alert('Some Error has Occured');");
-    					   	out.println("location='../Login.jsp';");
+    					   	out.println("location='../../Login.jsp';");
     					   	out.println("</script>");
     					}
 					%>
-    		</div>
-    	
-    		<div style="width: 21%;float: right;margin: 3% auto;margin-left:1%;padding: 15px;border: #ddd inset 1px;">
-    			Rating
+    				
+    				
+    				
+    				<h4>Rating</h4>
+    				</div>
+    			<%-- <div style="max-height:800px;overflow:scroll; border: #ddd inset 1px; padding: 5px;padding-top: 0px;margin-top: 10px;">
+    				<h4>Your Submissions</h4>
+    				<table style="font-size:10px;margin: auto;">
+    				<tr style="background: #ddd ;">
+    					<th style="padding: 5px;text-align: center;">Problem Id</th>
+    					<th style="padding: 5px;text-align: center;">Score</th>
+    					<th style="padding: 5px;text-align: center;">Lang</th>
+    					<th style="padding: 5px;text-align: center;">Solution</th>
+    				</tr>
+    				
+    					<%
+							try{
+							String submissions=doc.get("Submissions").toString();
+							StringTokenizer str=new StringTokenizer(submissions,",");
+							MongoClient mongo1 = new MongoClient( "localhost" , 27017 );
+							DB db1= mongo1.getDB("OnlineCodingPlatform");
+							DBCollection collection1 = db1.getCollection("Submissions");
+							DBObject doc1;
+							while(str.hasMoreTokens())
+							{
+								String sid=(str.nextElement()).toString();
+								
+								BasicDBObject query1 = new BasicDBObject("_id", new ObjectId(sid));
+								doc1= collection1.findOne(query1);
+								
+								%>
+								<tr>
+									<td style="padding: 5px;"><a style="display: inline-block;" href="../Practice&Learn/Problem.jsp?id=<%=doc1.get("QuestionId") %>"><%=doc1.get("QuestionId") %></a></td>
+									<td style="padding: 5px;text-align: center;"><%=doc1.get("Score") %></td>
+									<td style="padding: 5px;text-align: center;"><%=doc1.get("Language")%></td>
+									<td style="padding: 5px;text-align: center;"><a style="display: inline-block;" href="SubmissionView.jsp?id=<%=sid%>">View</a></td>
+								</tr>
+								<%
+								
+							}
+							}
+							catch(Exception e)
+							{
+								%>
+									<tr><td colspan="4">You have not solved any Problems yet.</td></tr>
+								
+								<%
+							}
+							%>
+    				</table>
+    			
+    			</div> --%>
+    			<div>
+    				<jsp:include page="MySubmissionTable.jsp"></jsp:include>
+    			</div>
+    			
+    			
     		</div>
     	</div>
     	
     	
     	<div>
-         	<jsp:include page="footer.jsp"></jsp:include>
+         	<jsp:include page="../footer.jsp"></jsp:include>
     	</div>
 	</body>
 </html>

@@ -11,13 +11,13 @@
 		HttpSession log=request.getSession(false);  
 		String n = (String)log.getAttribute("Username");
 		if(n == null){
-			response.sendRedirect("login.jsp");
+			response.sendRedirect("Login.jsp");
 		}
 		else{
 			session.invalidate();
 			out.println("<script type=\"text/javascript\">");
 		   	out.println("alert('Signed Out Successfully!!!');");
-		   	out.println("location='../index.jsp';");
+		   	out.println("location='index.jsp';");
 		   	out.println("</script>");
 		}
 	%>

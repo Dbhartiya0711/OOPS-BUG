@@ -16,13 +16,9 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Verify Problems</title>
+<link rel = "icon" href = "../../Images/IconSite.png">
 <link rel="stylesheet" href="../../Styles1.css">
-<!-- <style type="text/css">
-	a{
-		text-decoration: none; 
-	}
-</style> -->
 <%
 HttpSession log=request.getSession(false);
 String Username = (String)log.getAttribute("Username");		
@@ -47,7 +43,7 @@ String Username = (String)log.getAttribute("Username");
 <body>
 		
 		<div>
-         	<jsp:include page="header.jsp"></jsp:include>
+         	<jsp:include page="../header.jsp"></jsp:include>
     	</div>
 	    	
     	<div style="width: 80% ; border:#ddd inset 1px;;margin: 1% auto;padding: 2%;overflow: hidden;">
@@ -86,7 +82,7 @@ String Username = (String)log.getAttribute("Username");
     	</div>
     	
     	<div>
-         	<jsp:include page="footer.jsp"></jsp:include>
+         	<jsp:include page="../footer.jsp"></jsp:include>
     	</div>
 
 </body>
