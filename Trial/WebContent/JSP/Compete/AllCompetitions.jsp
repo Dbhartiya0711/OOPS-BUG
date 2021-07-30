@@ -48,6 +48,7 @@
     					<th>Code</th>
     					<th>Start</th>
     					<th>End</th>
+    					<th>Rankings</th>
     				</tr>
     				<%
 						while(cursor.hasNext())
@@ -62,6 +63,7 @@
 						<td><a href="Competition.jsp?id=<%=doc.get("_id")%>"><%=doc.get("_id")%></a></td>
 						<td><%=Start %></td>
 						<td><%=End %></td>
+						<td><a href="Rankings.jsp?id=<%=doc.get("_id")%>">Rankings</a></td>
 					</tr>
 					<%}%>
     			</table>   	

@@ -124,7 +124,6 @@
 		doc.append("TimeEnd", TimeEnd);
 		doc.append("TimeForCompetition",TimeForCompetition);
 		doc.append("Questions", questionString);
-		doc.append("RegisteredUsers","");
 		
 		collection.insert(doc);
 		Object id = doc.get( "_id" );
@@ -150,6 +149,10 @@
 			collection1.update(query,newDocument2);
 		}
 
+		out.println("<script type=\"text/javascript\">");
+	   	out.println("alert('Competition Hosted Successfully!!!');");
+	   	out.println("location='../Compete/AllCompetitions.jsp';");
+	   	out.println("</script>");		
 		%>
 	</body>
 </html>

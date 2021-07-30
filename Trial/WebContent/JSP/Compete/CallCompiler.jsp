@@ -11,7 +11,7 @@ import="java.net.URLEncoder"
 import="java.nio.charset.StandardCharsets"%><%
 String recieve;
 String buffer="";
-URL url = new URL("https://78cd5828.compilers.sphere-engine.com/api/v4/submissions?access_token=a522dbaf2025d7555f205a53314fba6a");
+URL url = new URL("https://c7db22e6.compilers.sphere-engine.com/api/v4/submissions?access_token=459e246d3a78018df2eba923a8d36c24");
 
 
 String sourceCode= URLEncoder.encode(request.getParameter("source"), StandardCharsets.UTF_8.toString());
@@ -48,8 +48,10 @@ buffread.close();
 String submission=buffer.substring(6,buffer.length()-1);
 int submissionId=Integer.parseInt(submission);
 
-Thread.sleep(5000); 
-URL url1 = new URL("https://78cd5828.compilers.sphere-engine.com/api/v4/submissions/"+submissionId+"?access_token=a522dbaf2025d7555f205a53314fba6a");
+int index=0;
+do{
+Thread.sleep(2000); 
+URL url1 = new URL("https://c7db22e6.compilers.sphere-engine.com/api/v4/submissions/"+submissionId+"?access_token=459e246d3a78018df2eba923a8d36c24");
 HttpURLConnection conn1 = (HttpURLConnection) url1.openConnection();
 conn1.setRequestMethod("GET");
 /* conn1.setRequestProperty("Accept", "application/json");
@@ -63,11 +65,17 @@ buffer="";
 while ((buffer = br.readLine()) != null)
 		output=output+"\n"+buffer;
 //out.println(output);
- 
-String AccessToken="a522dbaf2025d7555f205a53314fba6a";
+
+index=output.indexOf("true");
+
+}while(index>0);
+
+
+
+String AccessToken="459e246d3a78018df2eba923a8d36c24";
 
 try{
-String urioutput= "https://78cd5828.compilers.sphere-engine.com/api/v4/submissions/"+submissionId+"/output?access_token=a522dbaf2025d7555f205a53314fba6a";
+String urioutput= "https://c7db22e6.compilers.sphere-engine.com/api/v4/submissions/"+submissionId+"/output?access_token=459e246d3a78018df2eba923a8d36c24";
 
 URL url2 = new URL(urioutput.toString());
 HttpURLConnection conn2 = (HttpURLConnection) url2.openConnection();
@@ -82,7 +90,7 @@ out.print(output1);
 
 catch(FileNotFoundException e){
 	try{
-	String urioutput= "https://78cd5828.compilers.sphere-engine.com/api/v4/submissions/"+submissionId+"/cmpinfo?access_token=a522dbaf2025d7555f205a53314fba6a";    
+	String urioutput= "https://c7db22e6.compilers.sphere-engine.com/api/v4/submissions/"+submissionId+"/cmpinfo?access_token=459e246d3a78018df2eba923a8d36c24";    
     URL url3= new URL(urioutput.toString());
     HttpURLConnection conn3 = (HttpURLConnection) url3.openConnection();
     InputStreamReader in1 = new InputStreamReader(conn3.getInputStream());
@@ -96,7 +104,7 @@ catch(FileNotFoundException e){
 	catch(FileNotFoundException e1)
 	{
 		Thread.sleep(2000);
-		String urioutput= "https://78cd5828.compilers.sphere-engine.com/api/v4/submissions/"+submissionId+"/error?access_token=a522dbaf2025d7555f205a53314fba6a";    
+		String urioutput= "https://c7db22e6.compilers.sphere-engine.com/api/v4/submissions/"+submissionId+"/error?access_token=459e246d3a78018df2eba923a8d36c24";    
 	    URL url3= new URL(urioutput.toString());
 	    HttpURLConnection conn3 = (HttpURLConnection) url3.openConnection();
 	    InputStreamReader in1 = new InputStreamReader(conn3.getInputStream());

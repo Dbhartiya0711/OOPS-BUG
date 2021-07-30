@@ -83,7 +83,7 @@
 							{
 								String qid=str.nextElement().toString();
 								%>
-									<a style="display: inline-block;" href="../Practice&Learn/Problem.jsp?id=<%=qid%>"><%=qid%></a>
+									<a style="display: inline-block;" href="../Practice&Learn/Problem.jsp?id=<%=qid%>"><%=qid%></a> , 
 								<%
 								
 							}
@@ -108,7 +108,7 @@
 							{
 								String qid=str.nextElement().toString();
 								%>
-									<a style="display: inline-block;" href="../Practice&Learn/Problem.jsp?id=<%=qid%>"><%=qid%></a>
+									<a style="display: inline-block;" href="../Practice&Learn/Problem.jsp?id=<%=qid%>"><%=qid%></a> , 
 								<%
 								
 							}
@@ -123,7 +123,7 @@
 							%></td>
 						</tr>
 						<tr>
-							<td>My Competitions</td>
+							<td>Competitions Hosted</td>
 							<td><%
 							try{
 								String competitions=doc.get("CompetitionsHosted").toString();
@@ -133,7 +133,7 @@
 							{
 								String cid=str.nextElement().toString();
 								%>
-									<a style="display: inline-block;" href=""><%=cid%></a>
+									<a style="display: inline-block;" href=""><%=cid%></a> , 
 								<%
 								
 							}
@@ -193,6 +193,51 @@
     				
     				
     				<h4>Rating</h4>
+    				<div style="max-height:300px;overflow:scroll; border: #ddd inset 1px; padding: 3px;padding-top: 0px;margin-top: 10px;">
+    				<h4>Your Competitions</h4>
+    				<table style="font-size:10px;margin: auto;">
+    				<tr style="background: #ddd ;">
+    					<th style="padding: 3px;padding-right: 8px;text-align: center;">Competition Id</th>
+    					<th style="padding: 3px;padding-right: 8px;text-align: center;">Score</th>
+    				</tr>
+    				
+    					<%
+    					try{
+							BasicDBObject curs1=(BasicDBObject) doc.get("CompetitionsParticipated");
+							int size=curs1.size();
+							int i=1;
+							while(i<=size)
+							{
+								i++;
+								String id_score=curs1.toString();
+								
+								int indexx= id_score.indexOf(':');
+								String comp_id=id_score.substring(2, indexx-1);
+								String sco=id_score.substring(indexx+2,id_score.length()-1);
+								
+								%>
+								<tr>
+									<%-- <td style="padding: 3px;" colspan="2"> <%=id_score %> </td>
+									 --%>
+									 <td style="padding: 3px;padding-right: 8px;text-align: center;" > <%=comp_id %> </td>
+									<td style="padding: 3px;padding-right: 8px;text-align: center;" > <%=sco %> </td>
+								</tr>
+								<%
+								
+							}
+							}
+							catch(Exception e)
+							{
+								%>
+									<tr><td colspan="4">You have not solved any Problems yet.</td></tr>
+								
+								<%
+							}
+							%>
+    				</table>
+    			
+    			</div>
+    				
     				</div>
     			<%-- <div style="max-height:800px;overflow:scroll; border: #ddd inset 1px; padding: 5px;padding-top: 0px;margin-top: 10px;">
     				<h4>Your Submissions</h4>

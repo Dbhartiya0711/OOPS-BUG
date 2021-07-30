@@ -17,7 +17,7 @@ import="java.net.*;"%>
 <%
 	Thread.sleep(5000); 
 	String submissionId= request.getParameter("id");
-    URL url1 = new URL("https://78cd5828.compilers.sphere-engine.com/api/v4/submissions/"+submissionId+"?access_token=a522dbaf2025d7555f205a53314fba6a");
+    URL url1 = new URL("https://c7db22e6.compilers.sphere-engine.com/api/v4/submissions/"+submissionId+"?access_token=459e246d3a78018df2eba923a8d36c24");
     HttpURLConnection conn1 = (HttpURLConnection) url1.openConnection();
     conn1.setRequestMethod("GET");
     /* conn1.setRequestProperty("Accept", "application/json");
@@ -30,10 +30,10 @@ import="java.net.*;"%>
     output = br.readLine();
     //out.println(output);
      
-    String AccessToken="a522dbaf2025d7555f205a53314fba6a";
+    String AccessToken="459e246d3a78018df2eba923a8d36c24";
     
     try{
-    String urioutput= "https://78cd5828.compilers.sphere-engine.com/api/v4/submissions/"+submissionId+"/output?access_token=a522dbaf2025d7555f205a53314fba6a";
+    String urioutput= "https://c7db22e6.compilers.sphere-engine.com/api/v4/submissions/"+submissionId+"/output?access_token=459e246d3a78018df2eba923a8d36c24";
   
     URL url = new URL(urioutput.toString());
     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -46,7 +46,7 @@ import="java.net.*;"%>
     
     catch(FileNotFoundException e){
     	try{
-    	String urioutput= "https://78cd5828.compilers.sphere-engine.com/api/v4/submissions/"+submissionId+"/cmpinfo?access_token=a522dbaf2025d7555f205a53314fba6a";    
+    	String urioutput= "https://c7db22e6.compilers.sphere-engine.com/api/v4/submissions/"+submissionId+"/cmpinfo?access_token=459e246d3a78018df2eba923a8d36c24";    
         URL url = new URL(urioutput.toString());
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         InputStreamReader in1 = new InputStreamReader(conn.getInputStream());

@@ -26,6 +26,10 @@ String username=request.getParameter("username");
 String email=request.getParameter("email");
 String password=request.getParameter("password");
 String cpassword=request.getParameter("cpassword");
+String name=request.getParameter("name");
+String country=request.getParameter("country");
+String institution=request.getParameter("institution");
+String state=request.getParameter("state");
 
 
 //This is the code to insert the blog details into mongo collection
@@ -46,10 +50,10 @@ if(!cursor.hasNext() && !cursor1.hasNext())
 	doc.append("Email",email);
 	doc.append("Username",username);
 	doc.append("Password",password);
-	doc.append("Name", username);
-	doc.append("Country", "India");
-	doc.append("Institution","Dayananda Sagar College Of Engineering");
-	doc.append("State", "Karnataka");
+	doc.append("Name", name);
+	doc.append("Country", country);
+	doc.append("Institution",institution);
+	doc.append("State", state);
 	doc.append("Rating", 0);
 	collection.insert(doc);
 	out.println("<script type=\"text/javascript\">");

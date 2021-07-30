@@ -53,6 +53,34 @@ function checkpasswords()
 <div class="block">
 			<h3 style="padding-bottom: 25px;">Register</h3>
 			<form action="RegisterData.jsp" method="post">
+				<div>
+					<label class="label">
+						Name
+					</label>
+					<input class="input" type="text" name="name" required="required" autocomplete="name"/>
+					<br/>
+				</div>
+				<div>
+					<label class="label">
+						Country
+					</label>
+					<input class="input" type="text" name="country" required="required" autocomplete="country-name"/>
+					<br/>
+				</div>
+				<div>
+					<label class="label">
+						State
+					</label>
+					<input class="input" type="text" name="state" required="required" />
+					<br/>
+				</div>
+				<div>
+					<label class="label">
+						Institution
+					</label>
+					<input class="input" type="text" name="institution" required="required" autocomplete="organization"/>
+					<br/>
+				</div>
 				<div class="clear">
 					<label class="label">
 						Username
